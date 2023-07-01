@@ -92,8 +92,14 @@
             }
             break;
 
+<<<<<<< HEAD
         // default:
         //     require("./admins/index.php");
         //     break;  
+=======
+        default:
+            require_once("./admins/index.php");
+        break;  
+>>>>>>> main
     }
 ?>
