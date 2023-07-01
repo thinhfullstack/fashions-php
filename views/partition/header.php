@@ -1,7 +1,7 @@
 <header id="header">
     <div class="container">
         <div class="logo">
-            <a href="#">suntech việt nam</a>
+            <a href="index.php">suntech việt nam</a>
         </div>
 
         <div class="menu">
@@ -27,19 +27,6 @@
             </ul>
         </div>
 
-        <div class="sidebar-top">
-            <a href="./views/cart/index.php" class="cart_icon">
-                <img src="./assets/images/cart_icon.png" alt="">
-                <span>5</span>
-            </a>
-
-            <a href="#" class="cart_icon">
-                <img src="./assets/images/search_icon.png" alt="">
-            </a>
-
-            <a href="#" class="cart_icon">
-                <img src="./assets/images/menu.png" alt="">
-            </a>
-        </div>
+        <?php require_once("sidebar.php") ?>
     </div>
 </header>

@@ -42,7 +42,7 @@
             </tr> 
             <tr> 
                 <td>
-                    <a href="../index.php" class="btn btn-warning">Tiếp tục mua hàng</a>
+                    <a href="index.php" class="btn btn-warning">Tiếp tục mua hàng</a>
                 </td> 
                 <td colspan="2" class="hidden-xs"></td> 
                 <td class="hidden-xs text-center">

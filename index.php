@@ -20,37 +20,15 @@
 </head>
 <body>
     <!-- header -->
-    <?php require_once("./views/partition/header.php") ?>
+    <?php ($_GET['modules'] ?? null) != 'cart' ? require_once("./views/partition/header.php") : '' ?>
     <!-- end header -->
 
     <div class="main">
-        <!-- slider -->
-        <?php require_once("./views/contents/sliders/index.php") ?>
-        <!-- end slider -->
-
-        <!-- sellers -->
-        <?php require_once("./views/contents/sellers/index.php") ?>
-        <!-- end sellers -->
-
-        <!-- shipping -->
-        <?php require_once("./views/contents/shipping/index.php") ?>
-        <!-- end shipping -->
-
-        <!-- promotion -->
-        <?php require_once("./views/contents/promotions/index.php") ?>
-        <!-- end promotion -->
-
-        <!-- products -->
-        <?php require_once("./views/contents/products/index.php") ?>
-        <!-- end products -->
-
-        <!-- brands -->
-        <?php require_once("./views/contents/brands/index.php") ?>
-        <!-- end brands -->
+        <?php require_once("./views/load-layout.php") ?>
     </div>
     
     <!-- footer -->
-    <?php require_once("./views/partition/footer.php") ?>
+    <?php ($_GET['modules'] ?? null) != 'cart' ? require_once("./views/partition/footer.php") : '' ?>
     <!-- end footer -->
 </body>
 </html>
