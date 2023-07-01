@@ -19,95 +19,38 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <!-- header -->
     <?php require_once("./views/partition/header.php") ?>
+    <!-- end header -->
 
-    <?php require_once("./views/sliders/index.php") ?>
+    <div class="main">
+        <!-- slider -->
+        <?php require_once("./views/contents/sliders/index.php") ?>
+        <!-- end slider -->
 
-    <section id="best-seller">
-        <div class="container">
-            <ul class="product-list">
-                <li class="intro">
-                    <h2>best seller</h2>
-                    <small>The best productions from us</small>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda repellat vel aspernatur nesciunt</p>
-                </li>
-                <?php if(isset($_SESSION['products']) ?? null): ?>
-                    <?php foreach($_SESSION['products'] as $product): ?>
-                        <li>
-                            <img src="<?= $product['file'] ?>" alt="">
-                            <a href=""><?= $product['name'] ?></a>
-                            <p><?= $product['price'] ?></p>
-                            <div class="buy">
-                                <a href="#" onclick="addToCart(<?= $product['id'] ?>)" class="add-to-cart"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="add-to-fav"><i class="fa-solid fa-heart"></i></a>
-                                <a href="#" class="compare"><i class="fa-solid fa-retweet"></i></a>
-                            </div>
-                        </li>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </ul> 
-        </div>
-    </section>
+        <!-- sellers -->
+        <?php require_once("./views/contents/sellers/index.php") ?>
+        <!-- end sellers -->
 
-    <?php require_once("./views/shipping/index.php") ?>
+        <!-- shipping -->
+        <?php require_once("./views/contents/shipping/index.php") ?>
+        <!-- end shipping -->
 
-    <section id="promotion">
-        <div class="container">
-            <ul>
-                <li><img src="./assets/images/prom1.png" alt=""></li>
-                <li><img src="./assets/images/prom2.png" alt=""></li>
-                <li><img src="./assets/images/prom3.png" alt=""></li> 
-            </ul>
-        </div>
-    </section>
+        <!-- promotion -->
+        <?php require_once("./views/contents/promotions/index.php") ?>
+        <!-- end promotion -->
 
-    <section id="feature-product">
-        <h2>feature product</h2>
-        <i>Newest trends from top brand</i>
-            <div class="container">
-                <ul class="product-list">
-                    <?php if(isset($_SESSION['products']) ?? null): ?>
-                        <?php foreach($_SESSION['products'] as $product): ?>
-                            <li>
-                                <img src="<?= $product['file'] ?>" alt="">
-                                <a href=""><?= $product['name'] ?></a>
-                                <p><?= $product['price'] ?></p>
-                                <div class="buy">
-                                    <a href="" class="add-to-cart"><i class="fa-solid fa-cart-shopping"></i></a>
-                                    <a href="" class="add-to-fav"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="" class="compare"><i class="fa-solid fa-retweet"></i></a>
-                                </div>
-                            </li>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </ul>
-            </div>
-    </section>
+        <!-- products -->
+        <?php require_once("./views/contents/products/index.php") ?>
+        <!-- end products -->
 
-    <section id="brands">
-        <div class="discount">
-            <div class="text">
-                <h2>Get Out Special Discount</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. ipsum dolor sit amet consectetur adipisicing elit
-                    ipsum dolor sit amet consectetur adipisicing elit
-                </p>
-            </div>
-            <form action="">
-                <input type="text" name="" id="" placeholder="E-mail address ...">
-                <button>Get Coupon Now</button>
-            </form>
-        </div>
-
-        <div class="brands">
-            <ul>
-                <li class="brand-1"><a href="#"></a></li>
-                <li class="brand-2"><a href="#"></a></li>
-                <li class="brand-3"><a href="#"></a></li>
-                <li class="brand-4"><a href="#"></a></li>
-            </ul>
-        </div>
-    </section>
-
+        <!-- brands -->
+        <?php require_once("./views/contents/brands/index.php") ?>
+        <!-- end brands -->
+    </div>
+    
+    <!-- footer -->
     <?php require_once("./views/partition/footer.php") ?>
+    <!-- end footer -->
 </body>
 </html>
