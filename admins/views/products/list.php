@@ -1,3 +1,7 @@
+<?php 
+  // session_destroy();
+?>
+
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h2 class="display-4">Product Management</h2>
     <p><a href="index.php?module=product&action=create">Add new</a></p>
