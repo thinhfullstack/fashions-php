@@ -1,3 +1,8 @@
+<?php 
+    
+
+?>
+
 <section id="best-seller">
     <div class="container">
         <ul class="product-list">
@@ -13,9 +18,13 @@
                         <a href=""><?= $product['name'] ?></a>
                         <p><?= $product['price'] ?></p>
                         <div class="buy">
-                            <a href="#" onclick="addToCart(<?= $product['id'] ?>)" class="add-to-cart"><i class="fa-solid fa-cart-shopping"></i></a>
-                            <a href="#" class="add-to-fav"><i class="fa-solid fa-heart"></i></a>
-                            <a href="#" class="compare"><i class="fa-solid fa-retweet"></i></a>
+                            <button name="product_id" 
+                                onclick="addToCart(<?= $product['id'] ?>)" 
+                                class="add-to-cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                            <button class="add-to-fav"><i class="fa-solid fa-heart"></i></button>
+                            <button class="compare"><i class="fa-solid fa-retweet"></i></button>
                         </div>
                     </li>
                 <?php endforeach; ?>
