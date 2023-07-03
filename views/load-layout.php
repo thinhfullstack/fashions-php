@@ -6,7 +6,14 @@
         case 'cart':
             switch ($actionApp) {
                 case 'list':
-                    require_once("./views/contents/cart/process.php");
+                    require_once("./views/contents/cart/list.php");
+                    break;
+            }
+            break;
+
+        case 'seller':
+            switch ($actionApp) {
+                case 'list':
                     require_once("./views/contents/cart/list.php");
                     break;
             }
@@ -21,7 +28,7 @@
     ($_GET['modules'] ?? null) != 'cart' ? require_once("./views/contents/sliders/index.php") : '';
 
     // sellers
-    ($_GET['modules'] ?? null) != 'cart' ? require_once("./views/contents/sellers/index.php") : '';
+    ($_GET['modules'] ?? null) != 'cart' ? require_once("./views/contents/sellers/list.php") : '';
            
     // shipping
     ($_GET['modules'] ?? null) != 'cart' ? require_once("./views/contents/shipping/index.php") : '';

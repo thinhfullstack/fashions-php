@@ -1,3 +1,23 @@
+<?php 
+    // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //     $productId = $_POST['product_id'] ?? null;
+    
+    //     // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+    //     if (isset($_SESSION['products'][$productId])) {
+    //         // Sản phẩm đã tồn tại, tăng số lượng lên 1
+    //         $_SESSION['products'][$productId]++;
+    //     } else {
+    //         // Sản phẩm chưa tồn tại trong giỏ hàng, thêm vào với số lượng là 1
+    //         $_SESSION['products'][$productId] = 1;
+    //     }
+    
+    //     // Đếm tổng số lượng sản phẩm trong giỏ hàng
+    //     $cartCount = array_sum($_SESSION['products']);
+    
+    //     // Lưu số lượng vào session
+    //     $_SESSION['cart_count'] = $cartCount;
+    // }
+?>
 <h2 class="text-center">Giỏ hàng Fashion</h2>
 <div class="container"> 
     <table id="cart" class="table table-hover table-condensed"> 
@@ -11,28 +31,33 @@
             </tr> 
         </thead> 
         <tbody>
-            <tr> 
-                <td data-th="Product"> 
-                    <div class="row"> 
-                        <div class="col-sm-2 hidden-xs">
-                            <img src="http://hocwebgiare.com/thiet_ke_web_chuan_demo/shopping_cart/images/090.jpg" alt="Sản phẩm 1" class="img-responsive" width="100">
+            <?php if(isset($_SESSION['products']) ?? null): ?>
+                <?php $carts = $_SESSION['products'] ?>
+                <?php foreach ($carts as $productId => $quantity): ?>
+                <tr> 
+                    <td data-th="Product"> 
+                        <div class="row"> 
+                            <div class="col-sm-2 hidden-xs">
+                                <img src="<?= $quantity['file'] ?>" alt="Sản phẩm 1" class="img-responsive" width="100">
+                            </div> 
+                            <div class="col-sm-10"> 
+                                <h4 class="nomargin"><?= $quantity['name'] ?></h4>
+                                <p>Mô tả của sản phẩm 1</p> 
+                            </div> 
                         </div> 
-                        <div class="col-sm-10"> 
-                            <h4 class="nomargin">Sản phẩm 1</h4> 
-                            <p>Mô tả của sản phẩm 1</p> 
-                        </div> 
-                    </div> 
-                </td> 
-                <td data-th="Price">200.000 đ</td> 
-                <td data-th="Quantity">
-                    <input class="form-control text-center" value="1" type="number" />
-                </td> 
-                <td data-th="Subtotal" class="text-center">200.000 đ</td> 
-                <td class="actions" data-th="">
-                    <button class="btn btn-info btn-sm">Sửa</button> 
-                    <button class="btn btn-danger btn-sm">Xoá</button>
-                </td> 
-            </tr> 
+                    </td> 
+                    <td data-th="Price"><?= $quantity['price'] ?></td> 
+                    <td data-th="Quantity">
+                        <input class="form-control text-center" value="1" type="number" />
+                    </td> 
+                    <td data-th="Subtotal" class="text-center">200.000 đ</td> 
+                    <td class="actions" data-th="">
+                        <button class="btn btn-info btn-sm">Sửa</button> 
+                        <button class="btn btn-danger btn-sm">Xoá</button>
+                    </td> 
+                </tr> 
+                <?php endforeach; ?>
+            <?php endif; ?>
         </tbody>
         <tfoot> 
             <tr class="visible-xs"> 
