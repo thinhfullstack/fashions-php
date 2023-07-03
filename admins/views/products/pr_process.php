@@ -31,11 +31,11 @@
             } 
             
             $fileName = time() . "_" . $_FILES['file']['name'];
-            $targetPath = "./assets/image-admin/" . $fileName;
+            $targetPath = "../assets/image-admin/" . $fileName;
         
             move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
             
-            echo "<img src='./assets/image-admin/". $fileName ."' width='150' />";
+            echo "<img src='../assets/image-admin/". $fileName ."' width='150' />";
 
             $products = [
                 'id'    => count($_SESSION['products']) + 1,
