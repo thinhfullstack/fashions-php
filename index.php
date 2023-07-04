@@ -20,15 +20,15 @@
 </head>
 <body>
     <!-- header -->
-    <?php ($_GET['modules'] ?? null) != 'cart' ? require_once("./views/partition/header.php") : '' ?>
+    <?php ($_GET['modules'] ?? null) != 'cart' ? require_once("./src/views/partition/header.php") : '' ?>
     <!-- end header -->
 
     <div class="main">
-        <?php require_once("./views/load-layout.php") ?>
+        <?php require_once("./src/load/load-layout.php") ?>
     </div>
     
     <!-- footer -->
-    <?php ($_GET['modules'] ?? null) != 'cart' ? require_once("./views/partition/footer.php") : '' ?>
+    <?php ($_GET['modules'] ?? null) != 'cart' ? require_once("./src/views/partition/footer.php") : '' ?>
     <!-- end footer -->
 </body>
 </html>

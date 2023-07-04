@@ -60,21 +60,50 @@
             $errFile = 'Vui lòng chọn ảnh đại diện để đăng ký tài khoản';
         }
 
-        if($fullname && $email && $password && $phone && $address && $gender) {
-            if (empty($_FILES['file']['name'])) {
-                $errFile = 'Vui lòng chọn ảnh đại diện';
-            } else {
-                $fileName = time() . "_" . $_FILES['file']['name'];
-                $targetPath = "./assets/image-user/" . $fileName;
+        if (!empty($_FILES['file']['name'])) {
+            $fileName =  time() . "_" . $_FILES['file']['name'];
+            $targetPath = "../assets/image-user/" . $fileName;
+            move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
             
-                move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
-                
-                echo "<img src='./assets/image-user/". $fileName ."' width='100' />";
+            $file = $targetPath;
+        }
 
+        if (!empty($_GET['id'])) { // Sửa
+            $user = [];
+            // Tìm id trong array
+            $keyOfUser = null;
+            foreach ($_SESSION['users'] as $key => $item) {
+                if ($item['id'] == $_GET['id']) {
+                    $keyOfUser = $key;
+                    break;
+                }
+            }
+
+            $user = [
+                'id'       => $_GET['id'],
+                'fullname' => $fullname,
+                'file'     => $file,
+                'phone'    => $phone,
+                'address'  => $address,
+                'gender'   => $gender,
+                'email'    => $email,
+                'password' => $password,
+            ];
+
+            // Nếu không chọn ảnh mới thì giữ nguyên ảnh hiện tại
+            if (empty($file)) {
+                $user['file'] = $_SESSION['users'][$keyOfUser]['file'];
+            }
+
+            $_SESSION['users'][$keyOfUser] = $user;
+        }
+
+        if(empty($_GET['id'])) {
+            if($fullname && $email && $password && $phone && $address && $gender) {
                 $users = [
                     'id'       => count($_SESSION['users']) + 1,
                     'fullname' => $fullname,
-                    'file'     => $targetPath,
+                    'file'     => $file,
                     'phone'    => $phone,
                     'address'  => $address,
                     'gender'   => $gender,
@@ -84,11 +113,9 @@
 
                 $_SESSION['users'][] = $users;
                 
-                header('location:index.php?module=user&action=list');
-                return;
-
             }
-
         }
+          
+        header('location:index.php?module=user&action=list');
 
     }

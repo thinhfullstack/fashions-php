@@ -1,10 +1,17 @@
 <?php 
     $productID = $_GET['id'] ?? null;
 
+    $productInfo = null;
     foreach ($_SESSION['products'] as $product) {
         if($product['id'] == $productID) {
-
+            $productInfo = $product;
+            break;
         }
+    }
+
+    if (empty($productInfo)) {
+        echo 'Product not found!';
+        exit;
     }
 ?>
 
@@ -13,25 +20,34 @@
     <a href="index.php?module=product&action=list">Back</a>
 </div>
 <div>
-    <form action="index.php?module=product&action=create" method="POST" enctype="multipart/form-data">
+    <form action="index.php?module=product&action=edit&id=<?= $productID ?>" method="POST" enctype="multipart/form-data">
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-3 col-form-label">Product name</label>
             <div class="col-sm-9">
-                <input type="text" name="name" value="<?= $product['name'] ?>" class="form-control <?= $errName ? 'border-danger' : '' ?>" />
+                <input type="text" name="name" value="<?= $productInfo['name'] ?>" 
+                    class="form-control <?= $errName ? 'border-danger' : '' ?>" 
+                    placeholder="Nhập tên của sản phẩm" 
+                />
                 <?= $errName ? "<div class='text-danger'>$errName</div>" : '' ?>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-3 col-form-label">Product price</label>
             <div class="col-sm-9">
-                <input type="text" name="price" value="<?= $product['price'] ?>" class="form-control <?= $errPrice ? 'border-danger' : '' ?>" />
+                <input type="text" name="price" value="<?= $productInfo['price'] ?>" 
+                    class="form-control <?= $errPrice ? 'border-danger' : '' ?>" 
+                    placeholder="Nhập giá của sản phẩm"
+                />
                 <?= $errPrice ? "<div class='text-danger'>$errPrice</div>" : '' ?>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-3 col-form-label">Feature Image</label>
             <div class="col-sm-9">
-                <input type="file" name="file" value="<?= $product['file'] ?>" />
+                <input type="file" name="file" class="form-control border-0" />
+                <?php if(!empty($productInfo['file'])): ?>
+                    <img src="<?= $productInfo['file'] ?>" alt="" width="100px">
+                <?php endif; ?>
                 <?= $errFile ? "<div class='text-danger'>$errFile</div>" : '' ?>
             </div>
         </div>

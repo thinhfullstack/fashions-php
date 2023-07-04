@@ -1,22 +1,22 @@
 <?php 
-    // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //     $productId = $_POST['product_id'] ?? null;
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $productId = $_POST['product_id'] ?? null;
     
-    //     // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
-    //     if (isset($_SESSION['products'][$productId])) {
-    //         // Sản phẩm đã tồn tại, tăng số lượng lên 1
-    //         $_SESSION['products'][$productId]++;
-    //     } else {
-    //         // Sản phẩm chưa tồn tại trong giỏ hàng, thêm vào với số lượng là 1
-    //         $_SESSION['products'][$productId] = 1;
-    //     }
+        // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+        if (isset($_SESSION['products'][$productId])) {
+            // Sản phẩm đã tồn tại, tăng số lượng lên 1
+            $_SESSION['products'][$productId]++;
+        } else {
+            // Sản phẩm chưa tồn tại trong giỏ hàng, thêm vào với số lượng là 1
+            $_SESSION['products'][$productId] = 1;
+        }
     
-    //     // Đếm tổng số lượng sản phẩm trong giỏ hàng
-    //     $cartCount = array_sum($_SESSION['products']);
+        // Đếm tổng số lượng sản phẩm trong giỏ hàng
+        $cartCount = array_sum($_SESSION['products']);
     
-    //     // Lưu số lượng vào session
-    //     $_SESSION['cart_count'] = $cartCount;
-    // }
+        // Lưu số lượng vào session
+        $_SESSION['cart_count'] = $cartCount;
+    }
 ?>
 <h2 class="text-center">Giỏ hàng Fashion</h2>
 <div class="container"> 
